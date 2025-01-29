@@ -1,0 +1,19 @@
+:root {
+    --spacingXxs: 4px;
+    --spacingS: 13px;
+    --spacingM: 15px;
+
+    --borderRadiusS: 8px;
+
+    --maxWidth: 1600px;
+    --headerWidth: 64px;
+
+    --colorPrimary: #d1d7db;
+    --colorSecondary: #8696a0;
+    --colorLightGray: rgba(134, 150, 160, .15);
+    --colorGray: rgb(32, 44, 51);
+    --colorDark: rgb(38, 37, 36);
+    --colorDarkGray: rgb(17, 27, 33);
+    --colorBlack: rgba(0, 0, 0, 0);
+    --colorGreen: rgb(0, 168, 132);
+}
