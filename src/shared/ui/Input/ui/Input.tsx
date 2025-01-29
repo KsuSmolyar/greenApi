@@ -1,8 +1,22 @@
-import { inputProps } from "../config/types"
+import { forwardRef, useImperativeHandle, useRef } from "react";
+import { inputProps, InputRef } from "../config/types"
 import styles from "../Input.module.css"
 
-export const Input = ({placeholder}: inputProps) => {
+export const Input = forwardRef<InputRef,inputProps> (({ placeholder, onFocus, onBlur, ...props }, ref) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useImperativeHandle(ref, () => {
+        return {
+            focus() {
+                inputRef.current?.focus();
+            },
+            blur() {
+                inputRef.current?.blur()
+            }
+        };
+    }, []);
+
     return (
-        <input className={styles.input} placeholder={placeholder} />
+        <input ref={inputRef} className={styles.input} placeholder={placeholder} onFocus={onFocus} onBlur={onBlur} {...props} />
     )
-}
+})

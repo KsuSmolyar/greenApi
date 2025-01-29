@@ -1,0 +1,10 @@
+.searchBar {
+    display: flex;
+    color: var(--colorSilverGray);
+    margin: 0 var(--spacingM);
+    padding: 0 var(--spacingXl) 0 var(--spacingM);
+    background-color: var(--colorGray);
+    border-radius: var(--borderRadiusS);
+    gap: var(--spacingM);
+}
+

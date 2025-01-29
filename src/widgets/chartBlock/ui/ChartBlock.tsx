@@ -1,5 +1,7 @@
 import { ChartList } from "../../../entities/chartList";
+import { SearchBar } from "../../../features/searchBar";
 import styles from "../ChartBlock.module.css";
+import { ChartBlockHeader } from "./ChartBlockHeader";
 import ava from "/ava.jpg";
 
 
@@ -42,8 +44,10 @@ const chartListData = [
   ]
 export const ChartBlock = () => {
     return (
-        <div className={styles.chartBlock}>
-           <ChartList chartListData={chartListData} />
-        </div>
+      <div className={styles.chartBlock}>
+        <ChartBlockHeader />
+        <SearchBar />
+        <ChartList chartListData={chartListData} />
+      </div>
     )
 }

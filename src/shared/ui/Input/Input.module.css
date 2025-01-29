@@ -1,4 +1,16 @@
 .input {
     border-radius: var(--borderRadiusS);
     padding: var(--spacingS);
+    color: var(--colorPrimary);
+    width: 100%;
+}
+
+.input::placeholder {
+    color: var(--colorSilverGray);
+}
+
+.input:focus {
+    &::placeholder {
+        color: transparent;
+    }
 }

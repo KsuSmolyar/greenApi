@@ -43,6 +43,7 @@ input,
 button,
 textarea {
 	border: none;
+	background-color: transparent;
 }
 
 input::-ms-clear {
@@ -50,7 +51,6 @@ input::-ms-clear {
 }
 
 button {
-	background-color: transparent;
 	cursor: pointer;
 }
 
@@ -80,4 +80,5 @@ h5,
 h6 {
 	font-size: inherit;
 	margin: 0;
+	text-align: left;
 }
