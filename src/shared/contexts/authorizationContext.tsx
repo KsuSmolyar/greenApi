@@ -1,6 +1,7 @@
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { Credentials } from "../api/types";
 import { ApiService } from "../api/apiService";
+import { LOCAL_STORAGE_CREDENTIALS_KEY } from "../constants";
 
 type AuthorizationContextValue = {
 	setCredentials: (credentials: Credentials) => void
@@ -20,16 +21,15 @@ export const AuthorizationContextProvider = ({ children }: { children: React.Rea
 	const [credentials, setCredentials] = useState<Credentials | null>(null);
 	const [isAuthorized, setIsAuthorized] = useState(false)
 	const [isLoading, setIsLoading] = useState(false);
-	const isFirstRenderRef = useRef(true)
 
 	const apiService = useMemo(() => {
-		const currentCredentials = localStorage.getItem("credentials");
+		const currentCredentials = localStorage.getItem(LOCAL_STORAGE_CREDENTIALS_KEY);
 		if (currentCredentials) {
 			setIsLoading(true)
 			return new ApiService(JSON.parse(currentCredentials));
 		}
 		if (credentials) {
-			localStorage.setItem("credentials", JSON.stringify(credentials))
+			localStorage.setItem(LOCAL_STORAGE_CREDENTIALS_KEY, JSON.stringify(credentials))
 			setIsLoading(true)
 			return new ApiService(credentials);
 		}
@@ -37,15 +37,16 @@ export const AuthorizationContextProvider = ({ children }: { children: React.Rea
 	}, [credentials]);
 
 	useEffect(() => {
-		if (!isFirstRenderRef.current) return
 		if (apiService) {
-			isFirstRenderRef.current = false
 			apiService.getAccountInfo()
 				.then(res => {
 					if (res?.stateInstance === "authorized") {
 						setIsAuthorized(true);
-
 					}
+				})
+				.catch(() => {
+					localStorage.removeItem(LOCAL_STORAGE_CREDENTIALS_KEY)
+					setCredentials(null)
 				})
 				.finally(() => setIsLoading(false))
 		}
