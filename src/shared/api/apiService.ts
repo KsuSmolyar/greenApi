@@ -18,7 +18,7 @@ export class ApiService {
 
   #getUrl(path: string) {
     const id = this.idInstance.slice(0, 4);
-    return `https://${id}.api.greenapi.com/waInstance${this.idInstance}/${path}/${this.apiTokenInstance}`;
+    return `https://${id}.api.green-api.com/waInstance${this.idInstance}/${path}/${this.apiTokenInstance}`;
   }
 
   async getContacts(): Promise<Contact[]> {
