@@ -6,17 +6,17 @@ import { ChatContent } from "./ChatContent";
 
 
 export const Chat = () => {
-    const { activeContact } = useActiveContactContext();
-    
-    return (
-        <div className={styles.chat}>
-            {activeContact && <div className={styles.container}>
-                <div className={styles.inner}>
-                    <ChatHeader />
-                    <ChatContent />
-                    <ChatFooter />
-                </div>
-            </div>}
-        </div>
-    )
+	const { activeContact } = useActiveContactContext();
+
+	return (
+		<div className={styles.chat}>
+			{activeContact && <div className={styles.container}>
+				<div className={styles.inner}>
+					<ChatHeader />
+					<ChatContent />
+					<ChatFooter />
+				</div>
+			</div>}
+		</div>
+	)
 }

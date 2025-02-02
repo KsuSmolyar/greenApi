@@ -1,14 +1,14 @@
 .textArea {
-    border-radius: var(--borderRadiusS);
-    padding: var(--spacingS);
-    color: var(--colorWhite);
-    width: 100%;
-    background-color: var(--colorGray1);
-    max-height: 196px;
-    resize: none;
-    min-height: 42px;
+	border-radius: var(--borderRadiusS);
+	padding: var(--spacingS);
+	color: var(--colorWhite);
+	width: 100%;
+	background-color: var(--colorGray1);
+	max-height: 196px;
+	resize: none;
+	min-height: 42px;
 }
 
 .textArea::placeholder {
-    color: var(--colorSilverGray);
+	color: var(--colorSilverGray);
 }

@@ -1,21 +1,21 @@
 .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
 }
 
 .primary {
-    background-color: var(--colorGray);
-    padding: var(--spacingS) var(--spacingL);
-    border-radius: var(--borderRadiusS);
+	background-color: var(--colorGray);
+	padding: var(--spacingS) var(--spacingL);
+	border-radius: var(--borderRadiusS);
 }
 
 .transparent {
-    background-color: transparent;
+	background-color: transparent;
 }
 
 .img {
-    width: 24px;
-    height: 24px;
+	width: 24px;
+	height: 24px;
 }

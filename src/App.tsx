@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      {isAuthorized ? <Main/> : <Authorization />}
+      {isAuthorized ? <Main /> : <Authorization />}
     </>
   )
 }

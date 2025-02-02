@@ -6,7 +6,7 @@ const ActiveContactContext = createContext<
     setActiveContact: Dispatch<SetStateAction<ActiveContact | null>>
   }>({ activeContact: null, setActiveContact: () => { } });
 
-export const ActiveContactContextProvider = ({children}: {children: React.ReactElement}) => {
+export const ActiveContactContextProvider = ({ children }: { children: React.ReactElement }) => {
   const [activeContact, setActiveContact] = useState<ActiveContact | null>(null);
 
   return (

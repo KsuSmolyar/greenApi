@@ -1,11 +1,11 @@
 .mainPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--colorDark);
-    height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--colorDark);
+	height: 100%;
 }
 
 .container {
-    display: flex;
+	display: flex;
 }

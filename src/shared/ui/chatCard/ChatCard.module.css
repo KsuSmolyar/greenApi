@@ -1,77 +1,77 @@
 .card {
-    display: flex;
-    cursor: pointer;
+	display: flex;
+	cursor: pointer;
 
-    &:hover {
-        background-color: var(--colorLightGray);
-    }
+	&:hover {
+		background-color: var(--colorLightGray);
+	}
 }
 
 .card:not(:first-of-type) {
-    .content {
-        border-top: 1px solid var(--colorLightGray);
-    }
+	.content {
+		border-top: 1px solid var(--colorLightGray);
+	}
 }
 
 .imgContainer {
-    padding: var(--spacingS);
+	padding: var(--spacingS);
 }
 
 .unreadCounter,
 .imgContainer {
-    flex-shrink: 0;
+	flex-shrink: 0;
 }
 
 .img {
-    max-width: 49px;
-    max-height: 49px;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
+	max-width: 49px;
+	max-height: 49px;
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
 }
 
 .content {
-    display: grid;
-    width: 100%;
-    row-gap: var(--spacingXxs);
-    padding: var(--spacingM) var(--spacingM) var(--spacingM) 0;
-    text-align: left;
+	display: grid;
+	width: 100%;
+	row-gap: var(--spacingXxs);
+	padding: var(--spacingM) var(--spacingM) var(--spacingM) 0;
+	text-align: left;
 }
 
 .topContent {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--spacingS);
+	display: flex;
+	justify-content: space-between;
+	gap: var(--spacingS);
 }
 
 .bottomContent {
-    display: flex;
-    justify-content: flex-end;
-    gap: var(--spacingXxs);
+	display: flex;
+	justify-content: flex-end;
+	gap: var(--spacingXxs);
 }
 
 .text {
-    color: var(--colorSecondary);
-    font-size: var(--fzS);
-    line-height: 1.43;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    white-space: initial;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+	color: var(--colorSecondary);
+	font-size: var(--fzS);
+	line-height: 1.43;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	white-space: initial;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
 }
 
 .unread {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: var(--colorGreen);
-    font-size: var(--fzXs);
-    width: 20px;
-    height:20px;
-    flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background-color: var(--colorGreen);
+	font-size: var(--fzXs);
+	width: 20px;
+	height:20px;
+	flex-shrink: 0;
 }

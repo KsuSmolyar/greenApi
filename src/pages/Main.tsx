@@ -11,7 +11,7 @@ export const Main = () => {
         <div className={classNames(styles.container, "container")}>
           <ChatBlock />
           <Chat />
-        </div> 
+        </div>
       </div>
     </GlobalContextProvider>
   )
