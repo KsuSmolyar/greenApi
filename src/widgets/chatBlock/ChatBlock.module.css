@@ -22,3 +22,8 @@
     flex-direction: column;
     overflow-y: auto;
 }
+
+.subtitle {
+    padding-inline: var(--spacingS);
+    margin-bottom: var(--spacingS);
+}

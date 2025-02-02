@@ -28,8 +28,8 @@ export const Authorization = () => {
             <form className={styles.authorizationForm} onSubmit={handleSubmit}>
                 <h2 className={styles.formTitle}>Вход в WhatsApp Web</h2>
                 <p>Конфиденциально обменивайтесь сообщениями с друзьями и близкими в версии WhatsApp для браузера.</p>
-                <Input placeholder={"Ввведите IdInstance"} name={ID_INSTANCE} />
-                <Input placeholder={"Ввведите apiTokenInstance"} name={API_TOKEN_INSTANCE} />
+                <Input placeholder={"Ввведите IdInstance"} name={ID_INSTANCE} required type={"password"} />
+                <Input placeholder={"Ввведите apiTokenInstance"} name={API_TOKEN_INSTANCE} type={"password"} required />
                 <Btn variant={"primary"} type={"submit"}>Войти</Btn>
             </form>
         </div>

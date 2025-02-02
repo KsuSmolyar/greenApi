@@ -17,34 +17,34 @@ export type Message = {
   textMessage: string;
 };
 
-export type MessageType = "incoming" | "outgoing";
+export type MessageType = 'incoming' | 'outgoing'
 
 export type Notification = {
-  name: string;
-  id: string;
-  textMessage: string;
-};
+  name: string
+  id: string
+  textMessage: string
+}
 
 export type IncomingNotification = {
-  receiptId: number;
+  receiptId: number
   body: {
-    typeWebhook: string;
-    idMessage: string;
+    typeWebhook: string
+    idMessage: string
     senderData: {
-      chatId: string;
-      senderName: string;
-      senderContactName: string;
-    };
+      chatId: string
+      senderName: string
+      senderContactName: string
+    }
     messageData: {
       extendedTextMessageData: {
-        text: string;
-      };
+        text: string
+      }
       textMessageData: {
-        textMessage: string;
-      };
-    };
-  };
-};
+        textMessage: string
+      }
+    }
+  }
+}
 
 export type SendMessageParams = {
   chatId: string;

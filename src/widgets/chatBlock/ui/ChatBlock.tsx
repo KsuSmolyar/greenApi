@@ -16,7 +16,7 @@ export const ChatBlock = () => {
           {/* Чаты */}
           <ChatList chatListData={chats} />
           {/* Контакты */}
-          {!!chats.length && !!contacts.length && <h3>Контакты</h3>}
+          {!!chats.length && !!contacts.length && <h3 className={styles.subtitle}>Контакты</h3>}
           <ChatList chatListData={contacts} />
         </div>
         
