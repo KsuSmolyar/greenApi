@@ -1,19 +1,18 @@
 import classNames from "classnames";
 import styles from "../../styles/Main.module.css";
-import { Header } from "../entities/header"
-import { ChartBlock } from "../widgets/chartBlock"
-import { Chart } from "../widgets/chart";
+import { ChatBlock } from "../widgets/chatBlock"
+import { Chat } from "../widgets/chat";
+import { GlobalContextProvider } from "../shared/contexts";
 
 export const Main = () => {
     return (
-        <div className={styles.mainPage}>
-            <div className={classNames(styles.container, "container")}>
-                <Header />
-                <ChartBlock />
-                <Chart isEmpty={false} />
+        <GlobalContextProvider>
+             <div className={styles.mainPage}>
+                <div className={classNames(styles.container, "container")}>
+                    <ChatBlock />
+                    <Chat />
+                </div> 
             </div>
-            
-        </div>
-        
+       </GlobalContextProvider>
     )
 }

@@ -1,0 +1,30 @@
+.authorization {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorBeige);
+    height: 100%;
+    color: var(--colorBlack);
+  }
+
+  .authorizationForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--spacingM);
+    max-width: 840px;
+    width: 100%;
+    background-color: var(--colorWhite);
+    border: 1px solid var(--colorBlack);
+    padding: 60px;
+    border-radius: 25px;
+
+    input {
+        background-color: var(--colorLightGray);
+        color: var(--colorBlack);
+    }
+  }
+
+  .formTitle {
+    align-self: self-start;
+  }

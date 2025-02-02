@@ -13,6 +13,7 @@
     --maxWidth: 1600px;
     --headerWidth: 64px;
 
+    --fzXxs: 11px;
     --fzXs: 12px;
     --fzS: 14px;
     --fzM: 16px;
@@ -23,12 +24,17 @@
     --colorGray: rgb(32, 44, 51);
     --colorDark: rgb(38, 37, 36);
     --colorDarkGray: rgb(17, 27, 33);
-    --colorBlack: rgba(0, 0, 0, 0);
+    --colorBlack: rgb(0, 0, 0);
     --colorWhite: #fff;
+    --colorWhite06: rgba(255, 255, 255, 0.6);
     --colorGreen: rgb(0, 168, 132);
     --colorGreenDark: #005c4b;
     --colorSilverGray: rgb(209, 215, 219);
     --colorDustGray: rgb(34, 46, 53);
     --colorDarkestGray: rgb(11, 20, 26);
     --colorGray1: rgb(42, 57, 66);
+    --colorMessage: #e9edef;
+    --colorBeige: rgb(219, 216, 212);
+
+    --boxShadow1:  0 1px .5px rgba(11, 20, 26, .13);
 }

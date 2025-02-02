@@ -1,0 +1,41 @@
+.message {
+    position: relative;
+    gap: var(--spacingS);
+    color: var(--colorMessage);
+    padding: var(--spacingXs) var(--spacingXs) var(--spacingM) var(--spacingXs);
+    max-width: 65%;
+    min-width: 70px;
+    width: fit-content;
+    box-shadow: var(--boxShadow1);
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fzS);
+    line-height: 1.35;
+    z-index: 1;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        width: 8px;
+        height: 13px;
+    }
+}
+
+.primary {
+    background-color: var(--colorGreenDark);
+    align-self: flex-end;
+
+    &::before {
+        background-image: url("../../../../public/triangleRight.svg");
+        right: -8px;
+    }
+}
+
+.secondary {
+    background-color: var(--colorGray);
+
+    &::before {
+        background-image: url("../../../../public/triangleLeft.svg");
+        left: -8px;
+    }
+}

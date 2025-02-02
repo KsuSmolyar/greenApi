@@ -2,16 +2,20 @@ import '../styles/vars.css';
 import '../styles/_nulling-styles.css';
 import './App.css'
 import { Main } from './pages/Main';
-// import { Input } from "./shared/ui/Input/ui/Input";
-
+import { Authorization } from './pages/Authorization';
+import { useAuthorizationContext } from './shared/contexts/authorizationContext';
 
 
 function App() {
+  const { isAuthorized, isLoading } = useAuthorizationContext();
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <>
-      <Main/>
-
+      {isAuthorized ? <Main/> : <Authorization />}
     </>
   )
 }
