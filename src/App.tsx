@@ -10,7 +10,7 @@ function App() {
   const { isAuthorized, isLoading } = useAuthorizationContext();
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div className={"loading"}>Loading...</div>
   }
 
   return (

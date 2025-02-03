@@ -47,6 +47,8 @@ export const AuthorizationContextProvider = ({ children }: { children: React.Rea
 				.catch(() => {
 					localStorage.removeItem(LOCAL_STORAGE_CREDENTIALS_KEY)
 					setCredentials(null)
+					alert("Ошибка авторизации, возможно были введены неверные данные")
+					console.error("Ошибка авторизации")
 				})
 				.finally(() => setIsLoading(false))
 		}
