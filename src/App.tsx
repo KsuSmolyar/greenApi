@@ -5,6 +5,7 @@ import { Main } from './pages/Main';
 import { Authorization } from './pages/Authorization';
 import { useAuthorizationContext } from './shared/contexts/authorizationContext';
 import { Loader } from './entities/Loader';
+import loaderImg from "../public/whatsapp-96.png"
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
 
   if (isLoading) {
     return <div className={"loading"}>
-      <Loader isDone={isDone} imgSrc={"public/whatsapp-96.png"} imgAlt={"иконка WhatsApp"} />
+      <Loader isDone={isDone} imgSrc={loaderImg} imgAlt={"иконка WhatsApp"} />
     </div>
   }
 
