@@ -3,20 +3,23 @@ import { useActiveContactContext } from "../../../shared/contexts/activeContactC
 import { ChatHeader } from "./ChatHeader";
 import { ChatFooter } from "./ChatFooter";
 import { ChatContent } from "./ChatContent";
-
+import { ChatPreview } from "./ChatPreview";
 
 export const Chat = () => {
 	const { activeContact } = useActiveContactContext();
 
 	return (
 		<div className={styles.chat}>
-			{activeContact && <div className={styles.container}>
-				<div className={styles.inner}>
-					<ChatHeader />
-					<ChatContent />
-					<ChatFooter />
-				</div>
-			</div>}
+			{activeContact ?
+				<div className={styles.container}>
+					<div className={styles.inner}>
+						<ChatHeader />
+						<ChatContent />
+						<ChatFooter />
+					</div>
+				</div> :
+				<ChatPreview />
+			}
 		</div>
 	)
 }

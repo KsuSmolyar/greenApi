@@ -9,13 +9,15 @@ type ChatBlockContextType = {
 	contacts: Contact[];
 	setSearch: (search: string) => void;
 	addChat: (chat: Chat) => void;
+	setChats: (chats: Chat[]) => void;
 }
 
 export type Chat = ActiveContact & {
 	hasNewMessages?: boolean
+	unreadMessagesCounter?: number
 }
 
-const ChatBlockContext = createContext<ChatBlockContextType>({ chats: [], contacts: [], setSearch: () => { }, addChat: () => { } });
+const ChatBlockContext = createContext<ChatBlockContextType>({ chats: [], contacts: [], setSearch: () => { }, addChat: () => { }, setChats: () => { } });
 
 type ChatBlockState = {
 	contacts: Contact[];
@@ -31,7 +33,7 @@ const initialState: ChatBlockState = {
 
 interface ChatsAction {
 	type: "setChats",
-	payload: ActiveContact[]
+	payload: Chat[]
 }
 
 interface ContactsAction {
@@ -114,6 +116,9 @@ export const ChatBlockContextProvider = ({ children }: { children: React.ReactEl
 		dispatch({ type: "addChat", payload: chat })
 	}, [])
 
+	const setChats = useCallback((chats: Chat[]) => {
+		dispatch({ type: "setChats", payload: chats })
+	}, [])
 
 	useEffect(() => {
 		if (!isFirstRenderRef.current) return
@@ -127,7 +132,7 @@ export const ChatBlockContextProvider = ({ children }: { children: React.ReactEl
 	}, [apiService])
 
 	return (
-		<ChatBlockContext.Provider value={{ chats: chatBlockState.chats, contacts: filteredContacts, setSearch, addChat }}>
+		<ChatBlockContext.Provider value={{ chats: chatBlockState.chats, contacts: filteredContacts, setSearch, addChat, setChats }}>
 			{children}
 		</ChatBlockContext.Provider>
 	);

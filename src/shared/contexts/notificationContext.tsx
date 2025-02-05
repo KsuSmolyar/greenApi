@@ -4,13 +4,16 @@ import { useChatBlockContext } from "./chatBlockContext";
 import { useMessagesContext } from "./messagesContext";
 import { useAuthorizationContext } from "./authorizationContext";
 import { Notification } from "../api/types";
+import { setChatToLS } from "../utils/setChatToLS";
+import { getCurrentChats } from "../utils/getCurrentChats";
+import { LOCAL_STORAGE_CHATS_KEY } from "../constants";
 
 const NotificationContext = createContext(null);
 
 export const NotificationContextProvider = ({ children }: { children: React.ReactElement }) => {
 	const [notification, setNotification] = useState<Notification | null>(null)
 	const { activeContact } = useActiveContactContext();
-	const { addChat } = useChatBlockContext();
+	const { chats, setChats } = useChatBlockContext();
 	const { addMessage } = useMessagesContext();
 	const { apiService } = useAuthorizationContext();
 	const isFirstRenderRef = useRef(true)
@@ -19,20 +22,26 @@ export const NotificationContextProvider = ({ children }: { children: React.Reac
 		if (!notification) {
 			return
 		}
+
 		if (notification.id === activeContact?.id) {
 			addMessage({
 				type: 'incoming',
 				textMessage: notification.textMessage
 			})
+			setChatToLS({ id: notification.id, name: notification.name })
 		} else {
-			addChat({
+			const chatData = {
 				id: notification.id,
 				name: notification.name,
-				hasNewMessages: true
-			})
+				hasNewMessages: true,
+			}
+			const currentChats = getCurrentChats({ chatsArr: chats, chat: chatData })
+			console.log("currentChats", currentChats)
+			setChats(currentChats)
+			localStorage.setItem(LOCAL_STORAGE_CHATS_KEY, JSON.stringify(currentChats))
 		}
 		setNotification(null);
-	}, [notification, addChat, addMessage, activeContact])
+	}, [notification, addMessage, activeContact, chats, setChats])
 
 	useEffect(() => {
 		if (!isFirstRenderRef.current) return

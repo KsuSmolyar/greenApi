@@ -5,6 +5,11 @@
 	width: fit-content;
 }
 
+.btn[disabled] {
+	opacity: 0.1;
+	cursor: not-allowed;
+}
+
 .primary {
 	background-color: var(--colorGray);
 	padding: var(--spacingS) var(--spacingL);

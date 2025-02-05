@@ -81,3 +81,12 @@
 	padding: var(--spacingXs);
 	gap: var(--spacingS);
 }
+
+.chatPreview {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacingL);
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}

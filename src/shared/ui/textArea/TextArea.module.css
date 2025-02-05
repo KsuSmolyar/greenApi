@@ -9,6 +9,10 @@
 	min-height: 42px;
 }
 
+.textArea:focus {
+	box-shadow: var(--boxShadow2);
+}
+
 .textArea::placeholder {
 	color: var(--colorSilverGray);
 }

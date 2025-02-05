@@ -1,4 +1,4 @@
-.card {
+.chatCard {
 	display: flex;
 	cursor: pointer;
 
@@ -7,7 +7,11 @@
 	}
 }
 
-.card:not(:first-of-type) {
+.chatCardActive {
+	background-color: var(--colorLightGray);
+}
+
+.chatCard:not(:first-of-type) {
 	.content {
 		border-top: 1px solid var(--colorLightGray);
 	}

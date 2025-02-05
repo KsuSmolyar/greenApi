@@ -3,8 +3,8 @@ import styles from "../Btn.module.css";
 import { BtnProps } from "../config/types";
 import classNames from "classnames";
 
-export const Btn = memo(({ children, iconSrc, iconAlt, variant, onClick, ...props }: BtnProps) => {
-	const classes = classNames(styles.btn, {
+export const Btn = memo(({ children, iconSrc, iconAlt, variant, onClick, className, ...props }: BtnProps) => {
+	const classes = classNames(styles.btn, className, {
 		[styles.transparent]: variant === "transparent",
 		[styles.primary]: variant === "primary",
 	})
