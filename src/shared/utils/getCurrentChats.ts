@@ -7,7 +7,6 @@ export const getCurrentChats = ({
   chatsArr: Chat[];
   chat: Chat;
 }) => {
-  console.log("getCurrentChats вызов");
   const currChatsArr = [...chatsArr];
 
   for (let i = 0; i < currChatsArr.length; i++) {

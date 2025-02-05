@@ -36,7 +36,6 @@ export const NotificationContextProvider = ({ children }: { children: React.Reac
 				hasNewMessages: true,
 			}
 			const currentChats = getCurrentChats({ chatsArr: chats, chat: chatData })
-			console.log("currentChats", currentChats)
 			setChats(currentChats)
 			localStorage.setItem(LOCAL_STORAGE_CHATS_KEY, JSON.stringify(currentChats))
 		}
