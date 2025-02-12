@@ -9,7 +9,7 @@ import loaderImg from "../public/whatsapp-96.png"
 
 
 function App() {
-  const { isAuthorized, isLoading, isDone } = useAuthorizationContext();
+  const { isLoading, isDone, accountData } = useAuthorizationContext();
 
   if (isLoading) {
     return <div className={"loading"}>
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      {isAuthorized ? <Main /> : <Authorization />}
+      {accountData.isAuthorized ? <Main /> : <Authorization />}
     </>
   )
 }

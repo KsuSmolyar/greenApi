@@ -1,33 +1,24 @@
-import { useEffect, useState } from "react";
+import { useChatContext } from "../../../shared/contexts/chatContext";
 import styles from "../Chat.module.css";
-import { useActiveContactContext } from "../../../shared/contexts/activeContactContext";
-import ava from "../../../../public/ava.svg";
-import { getUserName } from "../../../shared/utils/getUserName";
-import { useAuthorizationContext } from "../../../shared/contexts/authorizationContext";
+import { ChatHeaderMenu } from "./ChatHeaderMenu";
 
 export const ChatHeader = () => {
-	const { activeContact } = useActiveContactContext();
-	const [imgSrc, setImgSrc] = useState("");
-	const [userName, setUserName] = useState("")
-	const { apiService } = useAuthorizationContext()
+	const { imgSrc, userName, openChatAside } = useChatContext();
 
-	useEffect(() => {
-		if (!activeContact) return
-		const { id } = activeContact;
-		apiService?.getContactInfo(id)
-			.then(res => {
-				setImgSrc(res?.avatar ? res.avatar : ava)
-				const currName = getUserName({ name: res?.name, contactName: res?.contactName, id })
-				setUserName(currName ?? "")
-			})
-	}, [activeContact, apiService])
+	const headerHandleClick = () => {
+		openChatAside();
+	}
 
 	return (
-		<header className={styles.header}>
-			<div className={styles.imgContainer}>
-				<img className={styles.img} src={imgSrc} alt={"аватарка"} />
+		<header className={styles.chatHeader} >
+			<div className={styles.chatHeaderContact} onClick={headerHandleClick}>
+				<div className={styles.imgContainer}>
+					<img className={styles.img} src={imgSrc} alt={"аватарка"} />
+				</div>
+				<h4 className={styles.title}>{userName}</h4>
 			</div>
-			<h4 className={styles.title}>{userName}</h4>
+
+			<ChatHeaderMenu />
 		</header>
 	)
 }

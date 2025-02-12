@@ -1,0 +1,40 @@
+.profileBlock {
+    max-width: 30%;
+    width: 100%;
+    background-color: var(--colorDarkGray);
+    border-right: 1px solid var(--colorLightGray);
+    padding: var(--spacingL) var(--spacingM);
+}
+
+.profileBlockTitle {
+    margin-bottom: 90px;
+    font-size: 22px;
+    
+}
+
+.profileBlockImgContainer {
+    border-radius: 50%;
+    width: 96px;
+    height: 96px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: var(--spacingXxl);
+}
+
+.profileBlockContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacingMax);
+    margin-inline: var(--spacingM);
+}
+
+.profileBlockContentTop {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacingXl);
+}
+
+.profileBlockText {
+    color: var(--colorDustyWhite);
+    font-size: var(--fzS);
+}

@@ -1,0 +1,26 @@
+.inlineInput {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacingXl);
+}
+
+.inlineInputBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid transparent;
+    padding-bottom: var(--spacingXxs);
+}
+
+.inlineInput.isEdited {
+    border-bottom: 2px solid var(--colorGreen);
+}
+
+.inlineInputEl {
+    width: 100%;
+    font-size: var(--fzM);
+}
+
+.inlineInputLabel {
+    color: var(--colorGreen);
+}

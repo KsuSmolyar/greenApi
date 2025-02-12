@@ -19,7 +19,6 @@ export const ChatBlock = () => {
           {!!chats.length && !!contacts.length && <h3 className={styles.subtitle}>Контакты</h3>}
           <ChatList chatListData={contacts} />
         </div>
-        
       </div>
     )
 }

@@ -10,6 +10,7 @@ type ChatBlockContextType = {
 	setSearch: (search: string) => void;
 	addChat: (chat: Chat) => void;
 	setChats: (chats: Chat[]) => void;
+	unreadMessagesCount: number
 }
 
 export type Chat = ActiveContact & {
@@ -17,7 +18,15 @@ export type Chat = ActiveContact & {
 	unreadMessagesCounter?: number
 }
 
-const ChatBlockContext = createContext<ChatBlockContextType>({ chats: [], contacts: [], setSearch: () => { }, addChat: () => { }, setChats: () => { } });
+const ChatBlockContext = createContext<ChatBlockContextType>(
+	{
+		chats: [],
+		contacts: [],
+		setSearch: () => { },
+		addChat: () => { },
+		setChats: () => { },
+		unreadMessagesCount: 0
+	});
 
 type ChatBlockState = {
 	contacts: Contact[];
@@ -108,6 +117,26 @@ export const ChatBlockContextProvider = ({ children }: { children: React.ReactEl
 
 	}, [chatBlockState])
 
+	const unreadMessagesCount = useMemo(() => {
+		let unreadChats = 0;
+
+		if (chatBlockState.chats.length > 1) {
+			chatBlockState.chats.forEach((chat) => {
+				if (chat.unreadMessagesCounter) {
+					unreadChats += chat.unreadMessagesCounter
+				}
+			})
+		}
+
+		if (chatBlockState.chats.length === 1) {
+			if (chatBlockState.chats[0].unreadMessagesCounter) {
+				unreadChats += chatBlockState.chats[0].unreadMessagesCounter
+			}
+		}
+		return unreadChats
+
+	}, [chatBlockState])
+
 	const setSearch = useCallback((search: string) => {
 		dispatch({ type: "search", payload: search })
 	}, [])
@@ -132,7 +161,15 @@ export const ChatBlockContextProvider = ({ children }: { children: React.ReactEl
 	}, [apiService])
 
 	return (
-		<ChatBlockContext.Provider value={{ chats: chatBlockState.chats, contacts: filteredContacts, setSearch, addChat, setChats }}>
+		<ChatBlockContext.Provider value={
+			{
+				chats: chatBlockState.chats,
+				contacts: filteredContacts,
+				setSearch,
+				addChat,
+				setChats,
+				unreadMessagesCount
+			}}>
 			{children}
 		</ChatBlockContext.Provider>
 	);

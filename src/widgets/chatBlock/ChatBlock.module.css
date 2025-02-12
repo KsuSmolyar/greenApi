@@ -5,6 +5,7 @@
     max-width: 30%;
     width: 100%;
     background-color: var(--colorDarkGray);
+    border-right: 1px solid var(--colorLightGray);
 }
 
 .header {

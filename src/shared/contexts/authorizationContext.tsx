@@ -1,28 +1,56 @@
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Credentials } from "../api/types";
 import { ApiService } from "../api/apiService";
-import { LOCAL_STORAGE_CREDENTIALS_KEY } from "../constants";
+import { LOCAL_STORAGE_CREDENTIALS_KEY, LOCAL_STORAGE_USER_PHOTO } from "../constants";
 
 type AuthorizationContextValue = {
 	setCredentials: (credentials: Credentials) => void
-	isAuthorized: boolean
 	apiService: ApiService | null
 	isLoading: boolean
-	isDone: boolean
+	isDone: boolean,
+	accountData: AccountDataType,
+	setUserName: (name: string) => void,
+	setAvatar: (imgSrc: string) => void,
 }
 
 const AuthorizationContext = createContext<AuthorizationContextValue>({
 	setCredentials: () => { },
-	isAuthorized: false,
 	apiService: null,
 	isLoading: false,
-	isDone: false
+	isDone: false,
+	accountData: {
+		isAuthorized: false,
+		avatar: "",
+		name: ""
+	},
+	setUserName: () => { },
+	setAvatar: () => { },
 });
+
+export type AccountDataType = {
+	isAuthorized: boolean,
+	avatar: string,
+	name: string
+
+}
 
 export const AuthorizationContextProvider = ({ children }: { children: React.ReactElement }) => {
 	const [credentials, setCredentials] = useState<Credentials | null>(null);
-	const [isAuthorized, setIsAuthorized] = useState(false)
 	const [isLoading, setIsLoading] = useState(false);
+	const [accountData, setAccountData] = useState<AccountDataType>({
+		isAuthorized: false,
+		avatar: "",
+		name: ""
+	})
+
+	const setAvatar = (imgSrc: string) => {
+		setAccountData(prev => ({ ...prev, avatar: imgSrc }));
+		localStorage.setItem(LOCAL_STORAGE_USER_PHOTO, imgSrc);
+	}
+
+	const setUserName = (name: string) => {
+		setAccountData(prev => ({ ...prev, name }));
+	}
 
 	const [isDone, setIsDone] = useState(false)
 	const isFirstRenderRef = useRef(true)
@@ -48,11 +76,13 @@ export const AuthorizationContextProvider = ({ children }: { children: React.Rea
 			apiService.getAccountInfo()
 				.then(res => {
 					if (res?.stateInstance === "authorized") {
+						const userNameFromLs = localStorage.getItem("userName");
+						setAccountData({ avatar: res?.avatar, name: userNameFromLs || res?.phone, isAuthorized: false })
 						setIsDone(true)
 
 						return new Promise((resolve) => {
 							setTimeout(() => {
-								setIsAuthorized(true)
+								setAccountData(prev => ({ ...prev, isAuthorized: true }))
 								resolve(null)
 								setIsLoading(false)
 							}, 3000)
@@ -73,7 +103,9 @@ export const AuthorizationContextProvider = ({ children }: { children: React.Rea
 	}, [apiService])
 
 	return (
-		<AuthorizationContext.Provider value={{ setCredentials, isAuthorized, apiService, isLoading, isDone }}>
+		<AuthorizationContext.Provider value={{
+			setCredentials, apiService, isLoading, isDone, accountData, setAvatar, setUserName
+		}}>
 			{children}
 		</AuthorizationContext.Provider>
 	)

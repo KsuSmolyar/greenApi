@@ -1,7 +1,7 @@
 import { getUserName } from "../utils/getUserName";
 import {
   Contact,
-  ContactInfo,
+  ContactAvatar,
   Credentials,
   Message,
   Notification,
@@ -34,7 +34,7 @@ export class ApiService {
     return [];
   }
 
-  async getContactInfo(id: string): Promise<ContactInfo | null> {
+  async getContactAvatar(id: string): Promise<ContactAvatar | null> {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -49,7 +49,7 @@ export class ApiService {
       redirect: "follow",
     };
 
-    const resp = await fetch(this.#getUrl("GetContactInfo"), requestOptions);
+    const resp = await fetch(this.#getUrl("getAvatar"), requestOptions);
 
     if (resp.ok) {
       return await resp.json();
@@ -87,7 +87,6 @@ export class ApiService {
       method: "GET",
       redirect: "follow",
     };
-
     const resp = await fetch(
       this.#getUrl("receiveNotification") + "?receiveTimeout=5",
       requestOptions
@@ -161,7 +160,11 @@ export class ApiService {
     return null;
   }
 
-  async getAccountInfo(): Promise<{ stateInstance: string } | null> {
+  async getAccountInfo(): Promise<{
+    stateInstance: string;
+    avatar: string;
+    phone: string;
+  } | null> {
     const requestOptions: RequestInit = {
       method: "GET",
       redirect: "follow",

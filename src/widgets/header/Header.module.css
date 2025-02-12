@@ -1,0 +1,52 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    max-width: 64px;
+    width: 100%;
+    padding: var(--spacingS);
+    justify-content: space-between;
+    background-color: var(--colorGray);
+    border-right: 1px solid var(--colorLightGray);
+}
+
+.headerBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: var(--spacingXxs);
+}
+
+.headerBtn.active {
+    background-color: var(--colorLightGray);
+}
+
+.headerProfileBtn {
+    img {
+        width: 100%;
+        border-radius: 50%;
+    }
+}
+
+.headerTopMessagesCounter {
+    --counterSize: 20px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--colorWhite);
+    background-color: var(--colorGreen);
+    border-radius: 50%;
+    min-width: var(--counterSize);
+    font-size: var(--fzXs);
+    top: -6px;
+    right: -4px;
+    padding: var(--spacingXxs);
+    font-weight: 600;
+}
+
+.headerBtnChat {
+    position: relative;
+}

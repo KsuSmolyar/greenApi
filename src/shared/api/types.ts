@@ -55,3 +55,7 @@ export type Credentials = {
   idInstance: string;
   apiTokenInstance: string;
 };
+
+export type ContactAvatar = {
+  urlAvatar: string;
+};

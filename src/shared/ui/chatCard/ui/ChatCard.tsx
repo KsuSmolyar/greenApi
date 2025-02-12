@@ -7,11 +7,13 @@ import { useChatBlockContext } from "../../../contexts/chatBlockContext";
 import { setChatToLS } from "../../../utils/setChatToLS";
 import { useMemo } from "react";
 import classNames from "classnames";
+import { useChatContext } from "../../../contexts/chatContext";
 export const ChatCard = (
 	{ name, id, contactName, hasNewMessages, unreadMessagesCounter }: ChatCardProps) => {
 	const { activeContact, setActiveContact } = useActiveContactContext();
 	const currName = getUserName({ name, contactName, id })
 	const { addChat } = useChatBlockContext();
+	const { closeChatAside } = useChatContext();
 
 	const isActive = useMemo(() => {
 		return activeContact?.id === id
@@ -19,6 +21,7 @@ export const ChatCard = (
 
 	const handleClick = () => {
 		setActiveContact({ id, name: currName ?? "" });
+		closeChatAside();
 		if (hasNewMessages) {
 			addChat({ id, name })
 			setChatToLS({ id, name })
