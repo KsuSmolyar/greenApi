@@ -94,6 +94,6 @@ ol:not([class])  > li::before {
   text-decoration: underline;
 }
 
-img {
+.authorizationInstruction {
   margin-bottom: 100px;
 }
