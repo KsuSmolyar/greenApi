@@ -37,6 +37,7 @@ export const Authorization = () => {
 			</form>
 			<div className={"container"}>
 				<h2 className={styles.title}>Для использования приложения необходимо осуществить следующие шаги:</h2>
+				<p>С более детальной инструкцией можно ознакомиться на сайте <a href={"https://green-api.com/docs/before-start/#cabinet"} rel={"noreferrer"}>Green-api</a></p>
 				<ol className={styles.authorizationOl}>
 					<li><b>Установить мобильное приложение WhatsApp</b></li>
 					<li><b>Регистрация в<a href={"https://console.green-api.com/registration"} rel={"noreferrer"}> Личном кабинете </a>Green-api</b>
