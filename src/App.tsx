@@ -1,5 +1,6 @@
 import '../styles/vars.css';
 import '../styles/_nulling-styles.css';
+import "../styles/utils.css";
 import './App.css'
 import { Main } from './pages/Main';
 import { Authorization } from './pages/Authorization';

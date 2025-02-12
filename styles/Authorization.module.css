@@ -1,10 +1,14 @@
 .authorization {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--colorBeige);
   height: 100%;
   color: var(--colorBlack);
+  padding-block: 80px;
+  overflow: auto;
+  gap: 32px;
 }
 
 .authorizationForm {
@@ -18,6 +22,7 @@
   border: 1px solid var(--colorBlack);
   padding: 60px;
   border-radius: 25px;
+  margin-top: 300px;
 
   input {
     background-color: var(--colorLightGray);
@@ -27,4 +32,68 @@
 
 .formTitle {
   align-self: self-start;
+}
+
+.title,
+.formTitle {
+  font-size: var(--fzL);
+}
+.title {
+  margin-bottom: var(--spacingM);
+}
+
+a {
+  color: var(--colorGreen);
+}
+
+.authorizationOl {
+  list-style-type: none;
+  overflow: auto;
+  counter-reset: num; 
+  line-height: 1.5;
+}
+
+.authorizationOl > li {
+  font-size: 20px;
+  counter-increment: num;
+}
+
+li:not(:last-child) {
+  margin-bottom: var(--spacingS);
+}
+
+.authorizationOl > li::before {
+  content: counter(num) ".";
+  min-width: 30px;
+}
+
+ol:not([class]) {
+  counter-reset: num2;
+}
+
+ol:not([class])  > li {
+  counter-increment: num2;
+}
+
+.authorizationOl > li::before,
+ol:not([class])  > li::before {
+  font-weight: 500;
+  padding-right: 8px;
+  color: var(--colorDark);
+}
+
+ol:not([class])  > li::before {
+  content: counter(num) "." counter(num2) ".";
+}
+
+.authorizationParagraph {
+  margin: var(--spacingM) 0;
+  line-height: 1.5;
+}
+.authorizationSpan {
+  text-decoration: underline;
+}
+
+img {
+  margin-bottom: 100px;
 }
